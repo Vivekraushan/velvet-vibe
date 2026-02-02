@@ -1,43 +1,36 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import supabaseBrowser from "@/lib/supabaseBrowser";
 
+export const dynamic = "force-dynamic";
 
-export default function RegisterPage() {
+export default function LoginPage() {
   const supabase = supabaseBrowser();
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
-  async function handleRegister(e: React.FormEvent<HTMLFormElement>) {
+  async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
 
-    const { error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    if (error) {
-      setError(error.message);
-      return;
+    if (!error) {
+      router.push("/feed");
     }
-
-    router.push("/feed");
   }
 
   return (
-    <div>
-      <form onSubmit={handleRegister}>
-        <input value={email} onChange={e => setEmail(e.target.value)} />
-        <input value={password} onChange={e => setPassword(e.target.value)} />
-        <button type="submit">Register</button>
-        {error && <p>{error}</p>}
-      </form>
-    </div>
+    <form onSubmit={handleLogin}>
+      <input value={email} onChange={e => setEmail(e.target.value)} />
+      <input value={password} onChange={e => setPassword(e.target.value)} />
+      <button type="submit">Login</button>
+    </form>
   );
 }
