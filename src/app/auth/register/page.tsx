@@ -1,13 +1,13 @@
 
 "use client";
+
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import supabaseBrowser from "@/lib/supabaseBrowser";
 
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
 
 export default function RegisterPage() {
   const router = useRouter();
