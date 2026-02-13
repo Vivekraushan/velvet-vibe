@@ -1,9 +1,10 @@
-export const dynamic = "force-dynamic";
+
 import supabaseServer from "@/lib/supabaseServer";
 import PostCard from "@/components/PostCard";
 import Link from "next/link";
 import type { Post } from "@/types/post";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export default async function FeedPage() {

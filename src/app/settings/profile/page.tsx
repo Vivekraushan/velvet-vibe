@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import supabaseBrowser from "@/lib/supabaseBrowser";
 import Image from "next/image";
 
+export const dynamic = "force-dynamic";
 export default function EditProfilePage() {
   const supabase = supabaseBrowser();
 

@@ -1,9 +1,10 @@
-export const dynamic = "force-dynamic";
+
 import supabaseServer from "@/lib/supabaseServer";
 import Image from "next/image";
 import PostCard from "@/components/PostCard";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-dynamic";
 type Profile = {
   id: string;
   username: string;
